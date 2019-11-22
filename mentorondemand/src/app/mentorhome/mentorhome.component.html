@@ -1,0 +1,108 @@
+<head>
+ 
+        <style>
+    
+            .navbar {
+                background-color: #91BF7C        }
+    
+            .footer {
+                height: 70px;
+                position: fixed;
+                width: 100%;
+                bottom: 0px;
+                background-color : #91BF7C;
+                color: white;
+            }
+            .bg {
+            
+            background-image:url( "https://image.shutterstock.com/image-photo/class-room-modern-260nw-435520957.jpg");
+            background-size: cover;
+            min-height: 600px;
+        }
+        
+        </style>
+    </head>
+    
+ 
+    <body class="bg">
+            <nav class="navbar navbar-expand-sm navbar-dark  ">
+                <a class="navbar-brand text-white" href="#">
+                    <h2><i class="fas fa-book-reader" aria-hidden="true"></i></h2>
+                </a>
+                <a class="navbar-brand" href="#">Mentor On Demand</a>
+    
+                <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:white" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    
+                    <ul class="navbar-nav ml-auto">
+                      
+                        <li class="nav-item">
+                            <a class="nav-link text-white " href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Hi, {{ItemMentor.mentorname}}</a>
+                        </li>
+                        
+                        <li class="nav-item ">
+                                <a class="nav-link text-white " routerLink="/AddSkill/">Add Skill</a>
+                            </li>
+                            
+                        <li class="nav-item">
+                            <a class="nav-link text-white " (click)="logout()" routerLink="/">Logout</a>
+                        </li>
+    
+    
+                    </ul>
+                </div>
+            </nav>
+            <h2 class="text-white" style="margin-left: 25px; margin-top: 20px;">List of Nominations</h2>
+
+            <div class="row  card-group " style="margin-top: 20px;">
+                    <div class="col-lg-3" *ngFor="let item  of  viewlist ">
+                        <div class="container">
+                            <div class="card bg-light " style="width:300px;height:200px;margin-left:15px">
+                               
+                                <span class="card-body">
+                                        <span class="badge badge-info " style="float:left" >Nominated</span>  <br/>
+                                    <span class="card-title " style="font-size:15px">User Name: {{item.usFirstName}}{{item.usLastName}}</span><br/>
+                                    <span class="card-title " style="font-size:15px">Skill Name: {{item.skName}}</span><br/>
+                                    <span class="card-title " style="font-size:15px">In Progress</span>
+                                    <br />
+                                   
+                
+                
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <footer class="bottom-footer footer">
+    
+                    <br /><p style="margin-left:50px">Copyright 2019</p>
+            
+                </footer>

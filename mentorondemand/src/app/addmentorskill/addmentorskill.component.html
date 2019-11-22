@@ -1,0 +1,165 @@
+<head>
+ 
+        <style>
+    
+            .navbar {
+                background-color: #91BF7C        }
+    
+            .footer {
+                height: 70px;
+                position: relative;
+                width: 100%;
+                bottom: 0px;
+                background-color : #91BF7C;
+                color: white;
+            }
+            .bg {
+            
+            background-image:url( "https://dcmep4q5dgnih.cloudfront.net/wp-content/uploads/2019/05/28153957/Classroom-activities-1024x682.jpg");
+            background-size: cover;
+            min-height: 600px;
+        }
+        
+        </style>
+    </head>
+    
+ 
+    <body class="bg">
+            <nav class="navbar navbar-expand-sm navbar-dark  ">
+                <a class="navbar-brand text-white" href="#">
+                    <h2><i class="fas fa-book-reader" aria-hidden="true"></i></h2>
+                </a>
+                <a class="navbar-brand" href="#">Mentor On Demand</a>
+    
+                <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:white" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    
+                    <ul class="navbar-nav ml-auto">
+                      
+                        <li class="nav-item">
+                            <a class="nav-link text-white " href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Hi, {{ItemMentor.mentorname}} </a>
+                        </li>
+                        <li class="nav-item ">
+                                <a class="nav-link text-white " routerLink="/Mentorhome/">Mentor Home</a>
+                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white " (click)="logout()" routerLink="/">Logout</a>
+                        </li>
+    
+    
+                    </ul>
+                </div>
+            </nav>
+
+            <form (ngSubmit)="addMentorSkill(mentorSkill)" #mentorSkillForm="ngForm">
+                    <div class="container">
+                  
+                          <div class="row">
+                                  <div class="margin-left:25px text-white"><h3>Add Your Skills</h3></div>
+                          </div>
+      
+  
+                      <div class="row">
+                          <div class="col">
+                              <div class="form-group">
+                                  <label for="sid" class="text-white"><b>Skill</b></label>
+                                  <select class="form-control" required [class.is-invalid]="sid.invalid && sid.touched" id="sid" name="sid" [(ngModel)]="mentorSkill.sid" #sid="ngModel">
+                                          <option *ngFor="let sk of reqskill" [value]="sk.skId">{{sk.skName}}</option>
+                                      </select>
+                                  <small class="text-danger" [class.d-none]="sid.valid || sid.untouched"><b>Skill is Required</b></small>
+                              </div>      
+                          </div>
+                      </div>
+   
+                      <div class="row">
+                          <div class="col">
+                              <div class="form-group">
+                                  <label for="selfRating" class="text-white"><b>Self Rating</b></label>
+                                  <input type="text" class="form-control" pattern="^[0-9]{1}$" maxlength="1" [class.is-invalid]="selfRating.invalid && selfRating.touched" id="selfRating" placeholder="SelfRating" name="selfRating" [(ngModel)]="mentorSkill.selfRating" #selfRating="ngModel">
+                                  <small class="text-danger" [class.d-none]="selfRating.valid || selfRating.untouched"><b>SelfRating is Required or must be valid</b></small>
+                              </div>
+                          </div> 
+                      </div> 
+                      
+                      <div class="row">
+                          <div class="col">
+                              <div class="form-group">
+                                  <label for="yearsOfExp" class="text-white"><b>Experience (Years)</b></label>
+                                  <input type="number" class="form-control" pattern="[0-9]{1}[0-9]{1}" required [class.is-invalid]="yearsOfExp.invalid && yearsOfExp.touched"  id="yearsOfExp" name="yearsOfExp" placeholder="Enter Experience" [(ngModel)]="mentorSkill.yearsOfExp"  #yearsOfExp="ngModel">
+                                  <small class="text-danger" [class.d-none]="yearsOfExp.valid || yearsOfExp.untouched"> Experience is Required or must be valid</small>
+  
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col">
+                              <div class="form-group">
+                                  <label for="trainingsDelivered" class="text-white"><b>Trainings Delivered</b></label>
+                                  <input type="number" class="form-control"  required [class.is-invalid]="trainingsDelivered.invalid && trainingsDelivered.touched"  id="trainingsDelivered" name="trainingsDelivered" placeholder="Enter Trainings Delivered" [(ngModel)]="mentorSkill.trainingsDelivered"  #trainingsDelivered="ngModel">
+                                  <small class="text-danger" [class.d-none]="trainingsDelivered.valid || trainingsDelivered.untouched"> Trainings delivered is Required or must be valid</small>
+                                  <!-- <div *ngIf="contact.errors?.customMax">Maximum number is 10.</div> -->
+                              </div>
+                          </div>
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col-md-6">
+  
+                               <div class="form-group">
+                                  <label for="facilitiesOffered" class="text-white"><b>Facilities Offered</b></label>
+                                  <input type="text" class="form-control " required pattern="^[a-zA-Z]+$"  [class.is-invalid]="facilitiesOffered.invalid && facilitiesOffered.touched" maxlength="50" id="facilitiesOffered" placeholder="Enter Facilities Offered" name="mtFirstName" [(ngModel)]="mentorSkill.facilitiesOffered" #facilitiesOffered="ngModel">
+                                 <small class="text-danger" [class.d-none]="facilitiesOffered.valid || facilitiesOffered.untouched"><b>First Name is Required or should contain only letters</b></small> 
+                              </div>  
+                          </div>
+                      </div>
+  
+                      <div class="row">
+                          <div class="col">
+                              <button type="submit"  class="btn btn-danger" style="background-color:#91BF7C" [disabled]="mentorSkillForm.invalid">Add Skill</button>
+                          </div>
+                      </div>
+      
+                   </div>
+                  
+              </form>
+              <label class="alert alert-success mx-auto" *ngIf="flag">
+                <strong>Added Skill Successfully</strong>
+            </label>
+  
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <footer class="bottom-footer footer">
+
+                    <br /><p style="margin-left:50px">Copyright 2019</p>
+            
+                </footer>
+            </body>

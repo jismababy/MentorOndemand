@@ -1,0 +1,151 @@
+
+<head>
+ 
+    <style>
+
+        .navbar {
+            background-color: #91BF7C        }
+
+        .footer {
+            height: 70px;
+            position: fixed;
+            width: 100%;
+            bottom: 0px;
+            background-color : #91BF7C;
+            color: white;
+        }
+        .bg {
+            
+            background-image:url( "https://media.istockphoto.com/photos/empty-classroom-picture-id612825786?k=6&m=612825786&s=612x612&w=0&h=v2I1BciU-NXgynmiUv3Ylcb5S4Hs7_DUoDNGrAXuFbc=");
+            background-size: cover;
+            min-height: 900px;
+        }
+    </style>
+</head>
+
+<body class="bg">
+
+        <nav class="navbar navbar-expand-sm navbar-dark  ">
+            <a class="navbar-brand text-white" href="#">
+                <h2><i class="fas fa-book-reader" aria-hidden="true"></i></h2>
+            </a>
+            <a class="navbar-brand" href="#">Mentor On Demand</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:white" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link text-white " routerLink="/Home/">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link text-white " (click)="logout()" routerLink="/">Logout</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+    
+        <div class="row mt-5" *ngIf="!flag">
+            <div class="col mx-auto">
+                <div class="card mx-auto" style="width:1000px;">
+                    <div class="card-body">
+    
+                            <!-- class="was-validated" -->
+                    <form (ngSubmit)="registerData(userItem)" #registerForm="ngForm" *ngIf=!flag >
+                        <div class="container">
+    
+                            <div class="row">
+                                <div class="col"><h2>Register </h2></div>
+                            </div>
+                      
+                            <div class="row" style="width:80">
+                                    <div class="col-md-6">
+        
+                                         <div class="form-group">
+                                            <label for="Name"><b>User Name</b></label>
+                                            <input type="text" class="form-control " required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" [class.is-invalid]="Name.invalid && Name.touched" maxlength="50" id="Name" placeholder="Enter User Name" name="Name" [(ngModel)]="userItem.usUsername" #Name="ngModel">
+                                           <small class="text-danger" [class.d-none]="Name.valid || Name.untouched"><b>User Name is Required </b></small> 
+                                        </div>  
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="password"><b>Password</b></label>
+                                            <input type="password" class="form-control" required [class.is-invalid]="password.invalid && password.touched" minlength="8" id="password" name="password" placeholder="Enter password" [(ngModel)]="userItem.usPassword"  #password="ngModel">
+                                            <small class="text-danger" [class.d-none]="password.valid || password.untouched"><b>Password is Required or must be between 8 to 15 characters</b></small> 
+                                             
+                                        </div>
+                                        </div>
+                                </div>
+                            <div class="row" style="width:80">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="firstname"><b>First Name</b></label>
+                                            <input type="text" class="form-control" required pattern="^[a-zA-Z]+$"  [class.is-invalid]="firstname.invalid && firstname.touched" maxlength="50" id="firstname" placeholder="Enter First Name" name="firstname" [(ngModel)]="userItem.usFirstName" #firstname="ngModel">
+                                            <small class="text-danger" [class.d-none]="firstname.valid || firstname.untouched"><b>First Name is Required or should contain only letters</b></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lastName"><b>Last Name</b></label>
+                                            <input type="text" class="form-control" required pattern="^[a-zA-Z]+$"  [class.is-invalid]="lastName.invalid && lastName.touched" maxlength="50" id="lastName" placeholder="Enter Last Name" name="lastName" [(ngModel)]="userItem.usLastName" #lastName="ngModel">
+                                            <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched"><b>Last Name is Required or should contain only letters</b></small>
+                                        </div>
+                                </div>
+                            </div>
+                              
+                            <div class="row" style="width:80">
+                                <div class="col-md-6">
+                                     <div class="form-group">
+                                        <label for="contact"><b>Contact</b></label>
+                                        <input type="text" class="form-control" pattern="[6-9]{1}[0-9]{9}" maxlength="10" required [class.is-invalid]="contact.invalid && contact.touched" id="contact" name="contact" placeholder="Enter Contact No." [(ngModel)]="userItem.usContactNumber"  #contact="ngModel">
+                                        <small class="text-danger"  [class.d-none]="contact.valid || contact.untouched"><b>Contact is Required or must contain only 10 digits</b></small><br/>
+                                    
+                     
+                                    </div>
+            
+                                    </div> 
+                                 
+                            </div>
+                                       <div class="row" >
+                                        <div class="col">
+                                            <button type="submit"  class="btn btn-success btn-lg mt-2 background-color:#91BF7C" [disabled]="registerForm.invalid">Register</button>
+                                        </div>
+                                    </div>
+                                   
+                               
+                           
+
+
+                                </div>
+                            </form>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+
+                           
+                            <div class="alert alert-success alert-dismissible" *ngIf="flag" >
+                                <div >
+                               <button type="button" class="close" data-dismiss="alert">&times;</button>
+                               <p class="text-white" style="font-size: 25px;">Successfully Resgistered</p>
+                      
+                               <button type="submit" class="btn btn-default mx-auto" style="background-color:#91BF7C" routerLink="/Login/">Go Login</button>
+                               </div>
+                               
+                             </div>
+                        
+    
+    
+    <footer class="bottom-footer footer">
+
+        <br /><p style="margin-left:50px">Copyright 2019</p>
+
+    </footer>
+</body>
+

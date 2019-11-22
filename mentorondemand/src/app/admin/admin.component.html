@@ -1,0 +1,129 @@
+<head>
+ 
+        <style>
+    
+            .navbar {
+                background-color: #91BF7C        }
+    
+            .footer {
+                height: 70px;
+                position: fixed;
+                width: 100%;
+                bottom: 0px;
+                background-color : #91BF7C;
+                color: white;
+            }
+            .bg {
+            
+            background-image:url( "https://nltimes.nl/sites/nl-times.nl/files/styles/main/public/2019/01/depositphotos_49272505_l-2015.jpg");
+            background-size: cover;
+            min-height: 700px;
+        }
+        
+        </style>
+    </head>
+    
+    <body class="bg">
+        
+            <nav class="navbar navbar-expand-sm navbar-dark  ">
+                <a class="navbar-brand text-white" href="#">
+                    <h2><i class="fas fa-book-reader" aria-hidden="true"></i></h2>
+                </a>
+                <a class="navbar-brand" href="#">Mentor On Demand</a>
+    
+                <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:white" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    
+                    <ul class="navbar-nav ml-auto">
+                      
+                        <li class="nav-item">
+                            <a class="nav-link text-white " href="#"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;Admin</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white " (click)="logout()" routerLink="/">Logout</a>
+                        </li>
+    
+    
+                    </ul>
+                </div>
+            </nav>
+
+<!-- 
+            <div class="card-columns " style="margin-top: 50px;">
+                    <div class="card bg-light " style="width:350px;margin-left:100px" *ngFor="let item  of  reqtech|async">
+                     
+                        <span class="card-body">
+                            <span class="card-title " style="font-size:20px" class="font-weight-bold">{{item.skName}}</span>
+                          
+                            <br /> -->
+                            <!-- <label class="mt-2" style="font-size:15px;margin-left:20px" class="font-weight-bold">{{item.skToc}}</label><span class="badge badge-info mt-2"  >{{item.skDuration}}</span>
+                     <br/><label class="mt-2" style="font-size:15px;margin-left:20px" >{{item.area}}</label><span class="badge badge-info mt-2" style="float:right" >{{item.pinCode}}</span>
+                            <br /> -->
+                          
+<!-- 
+                           <br />
+                        </span>
+                    </div>
+                   
+                </div>
+ -->
+
+
+ <h2 class="text-white" style="margin-top: 20px;">Available Technology List</h2>
+ <div class="container" style="margin-left:150px" style="margin-top:20px">
+       
+       <table class="table" style="width:100% " style="margin-top:40px">  
+               <thead class="thead-dark">
+           <tr>
+           <th>Skill Name</th>
+           <th>Skill Contents</th>
+           <th>Duration</th>
+           <th>Prerequites</th>
+                   
+           </tr>
+           </thead>
+             <tr *ngFor="let item  of  reqtech|async">
+                   
+               <td class="text-white">{{item.skName}}</td>
+               <td class="text-white">{{item.skToc}}</td>
+               <td class="text-white">{{item.skDuration}}</td>
+               <td class="text-white">{{item.skPrerequites}}</td>
+             </tr>
+             </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+            
+    <footer class="bottom-footer footer">
+
+            <br /><p style="margin-left:50px">Copyright 2019</p>
+    
+        </footer>
